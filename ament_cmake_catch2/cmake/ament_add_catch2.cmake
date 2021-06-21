@@ -41,13 +41,15 @@
 # :param APPEND_LIBRARY_DIRS: list of library dirs to append to the appropriate
 #   OS specific env var, a la LD_LIBRARY_PATH
 # :type APPEND_LIBRARY_DIRS: list of strings
+# :param REPORTER: a catch2 supported reporter. default: junit
+# :type REPORTER: string
 #
 # @public
 #
 macro(ament_add_catch2 target)
   cmake_parse_arguments(_ARG
     "SKIP_TEST"
-    "RUNNER;TIMEOUT;WORKING_DIRECTORY"
+    "RUNNER;TIMEOUT;REPORTER;WORKING_DIRECTORY"
     "APPEND_ENV;APPEND_LIBRARY_DIRS;ENV"
     ${ARGN})
   if(NOT _ARG_UNPARSED_ARGUMENTS)
@@ -80,6 +82,11 @@ macro(ament_add_catch2 target)
   endif()
   if(_ARG_APPEND_LIBRARY_DIRS)
     list(APPEND _argn_test "APPEND_LIBRARY_DIRS" ${_ARG_APPEND_LIBRARY_DIRS})
+  endif()
+  if(_ARG_REPORTER)
+    list(APPEND _argn_test "REPORTER" ${_ARG_REPORTER})
+  else()
+    list(APPEND _argn_test "REPORTER" "junit")
   endif()
   ament_add_catch2_test("${target}" ${_argn_test})
 endmacro()

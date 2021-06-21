@@ -48,7 +48,7 @@ function(ament_add_catch2_test target)
 
   cmake_parse_arguments(ARG
     "SKIP_TEST"
-    "RUNNER;TIMEOUT;WORKING_DIRECTORY"
+    "RUNNER;TIMEOUT;REPORTER;WORKING_DIRECTORY"
     "APPEND_ENV;APPEND_LIBRARY_DIRS;ENV"
     ${ARGN})
   if(ARG_UNPARSED_ARGUMENTS)
@@ -60,7 +60,7 @@ function(ament_add_catch2_test target)
   set(result_file "${AMENT_TEST_RESULTS_DIR}/${PROJECT_NAME}/${target}.catch2.xml")
   set(cmd
     "${executable}"
-    "-r junit"
+    "-r ${ARG_REPORTER}"
     "-o ${result_file}")
   if(ARG_ENV)
     set(ARG_ENV "ENV" ${ARG_ENV})
