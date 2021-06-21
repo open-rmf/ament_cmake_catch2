@@ -38,6 +38,8 @@
 # :param APPEND_LIBRARY_DIRS: list of library dirs to append to the appropriate
 #   OS specific env var, a la LD_LIBRARY_PATH
 # :type APPEND_LIBRARY_DIRS: list of strings
+# :param REPORTER: a catch2 supported reporter
+# :type REPORTER: string
 #
 # @public
 #
