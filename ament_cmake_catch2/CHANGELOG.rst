@@ -2,6 +2,11 @@
 Changelog for package ament_cmake_catch2
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.7.1 (2026-11-13)
+------------------
+* bump cmake version (`#10 <https://github.com/open-rmf/ament_cmake_catch2/issues/10>`_)
+* Contributors: Aaron Chong
+
 1.7.0 (2026-08-13)
 ------------------
 
